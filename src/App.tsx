@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Image } from './types/image'
 import { fetchImages } from './giphyApiService'
 import Modal from '@mui/material/Modal';
@@ -16,6 +16,7 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState('')
 
+  // Select wether to show cats or dogs
   const selectImageType = async (imageType: string) => {
     const newImages = await fetchImages(imageType, 1);
     setImages(newImages);
@@ -29,13 +30,11 @@ function App() {
     setPage(page + 1);
   }
 
+  // When clicking on an image, open the full sized version in a modal
   const openImageModal = (url: string) => {
     setModalOpen(true);
     setSelectedImage(url);
   }
-
-  useEffect(() => {
-  }, [])
 
   return (
     <>

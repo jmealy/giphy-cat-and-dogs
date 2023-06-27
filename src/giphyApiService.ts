@@ -6,12 +6,11 @@ export const fetchImages = async (searchTerm: string, pageNumber: number): Promi
     const { data } = await axios.get('https://api.giphy.com/v1/gifs/search', {
         params: {
             q: searchTerm,
-            api_key: 'ENTER_API_KEY_HERE',
+            api_key: '',
             limit: 25,
             offset: (pageNumber - 1) * 25,
         }
     })
-    console.log(data.data);
 
     const imageList = data.data.map((image: any) => ({
         url: image.images.fixed_width.url,
